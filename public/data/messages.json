@@ -1,0 +1,47 @@
+{
+  "messages": [
+    {
+      "sender": "OrchestratorAgent",
+      "content": "Policy for Customer <strong>2304992</strong> to expire matches threshold (<2 weeks).",
+      "time": "12/7/2024, 2:30:00 PM",
+      "photo": "/public/OrchestratorAgentAI.png"
+    },
+    {
+      "sender": "OrchestratorAgent",
+      "content": "Invoking PolicyAgent to retrieve details for Customer ID: <strong>2304992</strong>.",
+      "time": "12/7/2024, 2:30:01 PM",
+      "photo": "/public/OrchestratorAgentAI.png"
+    },
+    {
+      "sender": "PolicyAgent",
+      "content": "Policy Retrieved. Details as follows:",
+      "time": "12/7/2024, 2:30:02 PM",
+      "photo": "/public/PolicyAgentAI.png"
+    },
+    {
+      "sender": "PolicyAgent",
+      "content": "Policy: <strong>Direct-PruProTech Life</strong> | Expiry: <strong>26 Dec 2024</strong> | Premium: <span class='bg-black text-white px-2 py-1 rounded-full'> $99 </span><strong>SGD 1,200</strong>",
+      "time": "12/7/2024, 2:30:03 PM",
+      "photo": "/public/PolicyAgentAI.png"
+    },
+    {
+      "sender": "OrchestratorAgent",
+      "content": "Sharing details with the customer.",
+      "time": "12/7/2024, 2:30:04 PM",
+      "photo": "/public/OrchestratorAgentAI.png"
+    },
+    {
+      "sender": "CustomerService",
+      "content": "Generated WhatsApp: 'Hi Ms. Tan, your policy is expiring on <strong>26 Dec 2024</strong>. Renew now?'",
+      "time": "12/7/2024, 2:30:05 PM",
+      "photo": "/public/MarketingAgentAI.png"
+    },
+    {
+      "sender": "CustomerService",
+      "content": "Generated Email: '<strong>Subject:</strong> Renew Your Policy | <strong>Body:</strong> Dear Ms. Tan, your policy expires on <strong>26 Dec 2024</strong>. Click here to renew.'",
+      "time": "12/7/2024, 2:30:06 PM",
+      "type": "user",
+      "photo": "/public/MarketingAgentAI.png"
+    }
+  ]
+}

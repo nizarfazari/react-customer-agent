@@ -1,0 +1,33 @@
+.segemented .ant-segmented-group {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.segemented .ant-segmented-item{
+  width: 100%;
+}
+
+/* CSS for the Pulse Effect */
+.thinking {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 0.15em solid #333; /* Create the typing cursor effect */
+  white-space: nowrap;
+  animation: typing 2s steps(20) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 10em; 
+  }
+}
+
+@keyframes blinkCaret {
+  50% {
+    border-color: transparent;
+  }
+}

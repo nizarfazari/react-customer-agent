@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: hsla(23, 92%, 71%, 1);
+
+background: radial-gradient(circle, hsla(23, 92%, 71%, 1) 0%, hsla(345, 43%, 54%, 1) 100%);
+
+background: -moz-radial-gradient(circle, hsla(23, 92%, 71%, 1) 0%, hsla(345, 43%, 54%, 1) 100%);
+
+background: -webkit-radial-gradient(circle, hsla(23, 92%, 71%, 1) 0%, hsla(345, 43%, 54%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F9A470", endColorstr="#BC556F", GradientType=1 );
+}
+
+@layer utilities {
+  .container {
+    width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+}
+
+@layer utilities {
+  .dot {
+    @apply inline-block w-5 h-5 bg-black rounded-full;
+    animation: loader 0.8s infinite alternate;
+  }
+
+  .dot:nth-of-type(2) {
+    animation-delay: 0.2s;
+  }
+
+  .dot:nth-of-type(3) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes loader {
+    0% {
+      opacity: 0.9;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+  }
+}
