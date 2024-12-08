@@ -85,7 +85,7 @@ const InsuranceMetrix = (
 const items1 = [
   {
     key: "1",
-    label: <span className="font-bold">Insurance Matrix</span>,
+    label: <span className="font-bold">Insurance Details</span>,
     children: InsuranceMetrix,
   },
 ];

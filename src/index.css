@@ -9,15 +9,30 @@
 }
 
 body {
-  background: hsla(23, 92%, 71%, 1);
 
-background: radial-gradient(circle, hsla(23, 92%, 71%, 1) 0%, hsla(345, 43%, 54%, 1) 100%);
+  margin: 0;
+  padding: 0;
+  height: 1200px;
+  width: 100vw;
+  background-image: url('/public/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-background: -moz-radial-gradient(circle, hsla(23, 92%, 71%, 1) 0%, hsla(345, 43%, 54%, 1) 100%);
+}
 
-background: -webkit-radial-gradient(circle, hsla(23, 92%, 71%, 1) 0%, hsla(345, 43%, 54%, 1) 100%);
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F9A470", endColorstr="#BC556F", GradientType=1 );
+  50% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 @layer utilities {
@@ -77,9 +92,22 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F9A470", en
       opacity: 0.9;
       transform: scale(0.5);
     }
+
     100% {
       opacity: 0.1;
       transform: scale(1);
     }
   }
+}
+
+
+.link-style {
+  color: #5DADE2; /* Light blue color */
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.link-style:hover {
+  color: #3498DB; /* Slightly darker blue on hover */
 }

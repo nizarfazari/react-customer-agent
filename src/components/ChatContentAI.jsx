@@ -15,13 +15,6 @@ const messages = [
   {
     sender: "OrchestratorAgent",
     content:
-      "Policy for Customer <strong>2304992</strong> to expire matches threshold (<2 weeks).",
-    time: new Date().toLocaleString(),
-    photo: "/public/OrchestratorAgentAI.png",
-  },
-  {
-    sender: "OrchestratorAgent",
-    content:
       "Invoking PolicyAgent to retrieve details for Customer ID: <strong>2304992</strong>.",
     time: new Date().toLocaleString(),
     photo: "/public/OrchestratorAgentAI.png",
@@ -31,34 +24,39 @@ const messages = [
     content: "Policy Retrieved. Details as follows:",
     time: new Date().toLocaleString(),
     photo: "/public/PolicyAgentAI.png",
+    icon: "policy",
   },
   {
     sender: "PolicyAgent",
     content:
-      "Policy: <strong>Direct-PruProTech Life</strong> | Expiry: <strong>26 Dec 2024</strong> | Premium: SGD <span class='bg-black text-white px-2 py-1 rounded-full'> $1,200 </span>",
+      "Policy: <strong>Direct-PruProTech Life</strong> | Expiry: <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> | Premium: SGD <span class='bg-black text-white px-2 py-1 rounded-full'> $1,200 </span>",
     time: new Date().toLocaleString(),
     photo: "/public/PolicyAgentAI.png",
+    icon: "policy",
   },
   {
     sender: "OrchestratorAgent",
-    content: "Sharing details with the customer.",
+    content:
+      "Sending to Customer Service Agent to Prepare messages for Customer",
     time: new Date().toLocaleString(),
     photo: "/public/OrchestratorAgentAI.png",
   },
   {
     sender: "CustomerService",
     content:
-      "Generated WhatsApp: 'Hi Ms. Tan, your policy is expiring on <strong>26 Dec 2024</strong>. Renew now?'",
+      "Generated WhatsApp: 'Hi Mr. Kastanis, your policy is expiring on <strong>26 Dec 2024</strong>. Renew now?'",
     time: new Date().toLocaleString(),
     photo: "/public/MarketingAgentAI.png",
+    icon: "whatsapp",
   },
   {
     sender: "CustomerService",
     content:
-      "Generated Email: '<strong>Subject:</strong> Renew Your Policy | <strong>Body:</strong> Dear Ms. Tan, your policy expires on <strong>26 Dec 2024</strong>. Click here to renew.'",
+      "Generated Email: '<strong>Subject:</strong> Renew Your Policy | <strong>Body:</strong> Dear Mr. Kastanis, your policy expires on <strong>26 Dec 2024</strong> . Click <span class='link-style'>here</span> to renew.'",
     time: new Date().toLocaleString(),
     type: "user",
     photo: "/public/MarketingAgentAI.png",
+    icon: "email",
   },
 ];
 
@@ -82,8 +80,8 @@ const ChatContentAI = () => {
       if (index < messages.length) {
         // console.log("Current message:", data);
         const now = Date.now();
-        const elapsedTime = now - startTime; 
-        const timeExecution = elapsedTime - ((index + 1) * 3000);
+        const elapsedTime = now - startTime;
+        const timeExecution = elapsedTime - (index + 1) * 3000;
         setBuble((prevMessages) => {
           const updatedMessages = [
             ...prevMessages,
@@ -172,45 +170,21 @@ const ChatContentAI = () => {
     });
   };
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-    });
-  };
+  //   const scrollToBottom = () => {
+  //     messagesEndRef.current?.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "end",
+  //     });
+  //   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [buble]);
+  //   useEffect(() => {
+  //     scrollToBottom();
+  //   }, [buble]);
 
   return (
     <div className=" col-span-5">
       <ChatHeadersAI />
-      <div className="bg-[#F7FBFC] px-4 py-3 bg-[#F7FBFC] bg-cover rounded-lg ">
-        {/* <div className="bg-white w-full rounded-lg px-4 py-3 shadow-2xl ">
-          <div className="flex gap-3">
-            <div>
-              <img
-                src="/public/AgentAI.png"
-                className="w-12 h-12 object-cover rounded-full"
-                alt=""
-              />
-            </div>
-            <div>
-              <h1 className="text-normal font-medium">     Intelligent Multi Agent Operations</h1>
-              <p className="text-slate-500 text-sm">user@gmail.com</p>
-            </div>
-          </div>
-          <div className="mt-3">
-            <p>
-              This is the very beginning of your direct message history with{" "}
-              <span className="mr-3 bg-[#EBFAFF] font-semibold text-[#197493] px-2 py-1 rounded-lg">
-                @Ekrem Kenter
-              </span>
-            </p>
-          </div>
-        </div> */}
-
+      <div className="bg-[#F7FBFC] px-4 py-3 bg-[#F7FBFC] bg-cover rounded-lg h-[700px] overflow-y-auto custom-scrollbar">
         <div className="flex flex-col gap-4 my-4">
           {buble.map(
             (message, index) =>

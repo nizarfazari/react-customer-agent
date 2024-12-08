@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { Basket } from "@phosphor-icons/react";
 import ModalComponent from "./ModalComponent";
 import { useEffect, useState } from "react";
 
@@ -30,86 +29,87 @@ const BubleChat = ({ messages }) => {
             alt=""
           />
         </div>
-        <div className="w-fit">
-          <div
-            className={`w-fit rounded-lg px-4 py-2 shadow-2xl ${
-              messages?.sender === "User"
-                ? "bg-blue-600 text-white"
-                : "bg-white "
-            }`}
-          >
-            <div className="flex justify-between">
-              <h1 className="text-lg font-medium ">{messages?.sender}</h1>
-              <p className="ml-10 text-gray-700 font-light">{messages?.time_execution}</p>
-            </div>
+        {isLoading ? (
+          <p className="mt-2 thinking">Thinking...</p>
+        ) : (
+          <div className="w-fit">
+            <div
+              className={`w-fit rounded-lg px-4 py-2 shadow-2xl ${
+                messages?.sender === "User"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white "
+              }`}
+            >
+              <div className="flex justify-between ">
+                <h1 className="text-lg font-medium ">{messages?.sender}</h1>
+                {messages?.icon === "policy" && (
+                  <ModalComponent modalTitle="Policy">
+                    <img src="/public/modal/policy.png" alt="" />
+                  </ModalComponent>
+                )}
 
-            {messages?.sender !== "User" ? (
-              isLoading ? (
-                <p className="mt-2 thinking">Thinking...</p>
-              ) : (
+                {["email", "whatsapp"].includes(messages?.icon) && (
+                  <ModalComponent
+                    modalTitle={
+                      messages?.icon === "email" ? "Email" : "WhatsApp"
+                    }
+                    iconType={messages?.icon}
+                  >
+                    <img
+                      src={`/public/modal/${messages.icon}.png`} // Dynamically load the correct image
+                      alt={messages.sender.icon}
+                    />
+                  </ModalComponent>
+                )}
+              </div>
+
+              {messages?.sender !== "User" ? (
                 <p
                   className="mt-2"
                   dangerouslySetInnerHTML={{ __html: content }}
                 />
-              )
-            ) : (
-              <p
-                className="mt-2"
-                dangerouslySetInnerHTML={{ __html: messages?.content || "" }}
-              />
-            )}
+              ) : (
+                <p
+                  className="mt-2"
+                  dangerouslySetInnerHTML={{ __html: messages?.content || "" }}
+                />
+              )}
 
-            {/* <AnimatedText content={messages?.content} /> */}
-
-            {messages?.sender === "PolicyAgent" && (
-              <div className="mt-4 rounded-md py-2 flex justify-end w-full">
-                <div className="flex gap-2 items-center">
-                  <ModalComponent buttonText="Policy" buttonColor="blue">
-                    <img src="/public/modal/policy.png" alt="" />
-                  </ModalComponent>
+              {messages?.sender === "PolicyAgent" && (
+                <div className="mt-4 rounded-md py-2 flex justify-end w-full">
+                  <div className="flex gap-2 items-center">
+                    <button className="px-8 py-1 border bg-[#D6ECFF] rounded-full text-[#158CFF] font-semibold">
+                      <p>Edit</p>
+                    </button>
+                    <button className="px-7 py-1 border bg-lightgray-700 rounded-full text-white font-semibold">
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {messages?.sender === "OrchestratorAgent" && (
-              <div className="mt-4 py-2 flex  justify-end w-full">
-                <div className="flex gap-2 items-center">
-                  <ModalComponent buttonText="Whatsapp">
-                    <img src="/public/modal/whatsapp.png" alt="" />
-                  </ModalComponent>
-                  <ModalComponent buttonText="Email" buttonColor="blue">
-                    <img src="/public/modal/email.webp" alt="" />
-                  </ModalComponent>
+              {messages?.sender === "OrchestratorAgent" && (
+                <div className="mt-4 py-2 flex  justify-end w-full">
+                  <div className="flex gap-2 items-center">
+                    <button className="px-8 py-1 border bg-[#D6ECFF] rounded-full text-[#158CFF] font-semibold">
+                      <p>Edit</p>
+                    </button>
+                    <button className="px-7 py-1 border bg-lightgray-700 rounded-full text-white font-semibold">
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
+            <p className="text-gray-600">
+              {new Date(messages?.time).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
           </div>
-          <p className="text-gray-600">
-            {new Date(messages?.time).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </p>
-        </div>
+        )}
       </div>
-
-      {/* Product Purchased */}
-      {messages?.status === "success" && (
-        <div className="flex  bg-white shadow-xl rounded-lg mt-3 py-2 px-4 mx-auto items-center ">
-          <Basket size={22} weight="fill" className="text-blue-700 mr-4" />
-          <span className="mr-3 bg-[#EBFAFF] font-semibold text-[#197493] px-2 py-1 rounded-lg">
-            @Ekrem Kenter
-          </span>
-          <p className="font-medium">
-            Product purchased!{" "}
-            <span className="bg-black text-white px-2 py-1 rounded-full">
-              $99
-            </span>{" "}
-            SNOW TEETH WHITENING KIT
-          </p>
-          <span className="text-sm text-slate-500 ml-4">2m ago</span>
-        </div>
-      )}
     </>
   );
 };

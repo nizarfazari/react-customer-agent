@@ -1,15 +1,12 @@
 import {
-    BugBeetle,
-    ChatTeardropDots,
+  BugBeetle,
+  ChatTeardropDots,
   Clock,
-  DotsThreeOutline,
   Eye,
   HardDrives,
   MagnifyingGlass,
-  PhoneCall,
   Robot,
   User,
-  VideoCamera,
 } from "@phosphor-icons/react";
 
 import { Segmented } from "antd";
@@ -18,7 +15,7 @@ import { AppContext } from "../context/buble";
 import { useContext } from "react";
 
 const IconComponentAI = () => {
-    const { buble, countAction } = useContext(AppContext);
+  const { buble, countAction } = useContext(AppContext);
   return (
     <div className="p-5 rounded-l-lg col-span-2">
       <div className="flex items-center flex-col">
@@ -30,35 +27,9 @@ const IconComponentAI = () => {
           />
           <div className="absolute w-5 h-5 bg-green-500 rounded-full bottom-0 right-5"></div>
         </div>
-        <h1 className="text-lg font-medium">AI Ogus Kara</h1>
-        <p className="text-slate-400 text-sm">10:00 am in Ankara, Turkey</p>
-
-        <div className="flex items-center gap-14 mt-4">
-          <div className="cursor-pointer">
-            <PhoneCall
-              size={24}
-              weight="fill"
-              className="mx-auto text-gray-700"
-            />
-            <p className="mt-2 text-gray-600">Call</p>
-          </div>
-          <div className="cursor-pointer">
-            <VideoCamera
-              size={24}
-              weight="fill"
-              className="mx-auto text-gray-700"
-            />
-            <p className="mt-2 text-gray-600 text-center">Vidio</p>
-          </div>
-          <div className="cursor-pointer">
-            <DotsThreeOutline
-              size={24}
-              className="mx-auto text-gray-700"
-              weight="fill"
-            />
-            <p className="mt-2 text-gray-600">More</p>
-          </div>
-        </div>
+        <h1 className="text-lg font-medium">
+          Intelligent Multi Agent Operations
+        </h1>
 
         <div className="details grid grid-cols-2 mt-4 gap-5">
           <div className="border border-gray-300 bg-white shadow-lg  p-4 rounded-lg">
@@ -71,7 +42,9 @@ const IconComponentAI = () => {
                 />
                 <p className="text-slate-600 text-[14px]">No of Iterations</p>
               </div>
-              <p className="font-semibold text-2xl mt-1 text-center">{buble.length}</p>
+              <p className="font-semibold text-2xl mt-1 text-center">
+                {buble.length}
+              </p>
             </div>
           </div>
           <div className="border border-gray-300 bg-white shadow-lg  p-4 rounded-lg">
@@ -86,11 +59,7 @@ const IconComponentAI = () => {
           <div className="border border-gray-300 bg-white shadow-lg  p-4 rounded-lg">
             <div>
               <div className="flex items-center gap-2">
-                <BugBeetle
-                  size={18}
-                  weight="fill"
-                  className="text-slate-500"
-                />
+                <BugBeetle size={18} weight="fill" className="text-slate-500" />
                 <p className="text-slate-600 text-[14px]">Exceptions</p>
               </div>
               <p className="font-semibold text-2xl mt-1 text-center">0</p>
@@ -102,7 +71,9 @@ const IconComponentAI = () => {
                 <Eye size={18} weight="fill" className="text-slate-500" />
                 <p className="text-slate-600 text-[14px]">Actions</p>
               </div>
-              <p className="font-semibold text-2xl mt-1 text-center">{countAction}</p>
+              <p className="font-semibold text-2xl mt-1 text-center">
+                {countAction}
+              </p>
             </div>
           </div>
         </div>

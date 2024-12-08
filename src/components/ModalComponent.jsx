@@ -2,21 +2,21 @@
 import { useContext, useState } from "react";
 import { Modal } from "antd";
 import { AppContext } from "../context/buble";
+import { FileText, WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react"; // Tambahkan ikon Email dari Phosphor Icons
 
 const ModalComponent = ({
-  buttonText = "Open Modal",
   modalTitle = "Basic Modal",
   children,
   onOk,
   onCancel,
-  buttonColor = "green", 
+  iconType = "file", // Properti untuk menentukan jenis ikon
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { incrementActionCount } = useContext(AppContext);
 
   const showModal = () => {
     setIsModalOpen(true);
-    incrementActionCount()
+    incrementActionCount();
   };
 
   const handleOk = () => {
@@ -29,20 +29,40 @@ const ModalComponent = ({
     setIsModalOpen(false);
   };
 
- 
-  const buttonStyles = {
-    green: "px-3 py-1 border border-green-700 text-center text-white bg-green-500 hover:bg-green-700 rounded-lg font-semibold",
-    blue: "px-3 py-1 border border-blue-700 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold",
+  // Pemetaan ikon berdasarkan `iconType`
+  const iconMapping = {
+    file: (
+      <FileText
+        size={25}
+        weight="fill"
+        className="text-blue-500 cursor-pointer"
+      />
+    ),
+    whatsapp: (
+      <WhatsappLogo
+        size={25}
+        weight="fill"
+        className="text-green-500 cursor-pointer"
+      />
+    ),
+    email: (
+      <EnvelopeSimple
+        size={25}
+        weight="fill"
+        className="text-blue-500 cursor-pointer"
+      />
+    ), // Ikon Email
   };
+
+  
 
   return (
     <>
-      <button
-        onClick={showModal}
-        className={buttonStyles[buttonColor] || buttonStyles.green} 
-      >
-        {buttonText}
-      </button>
+      {/* Ikon yang ditampilkan sesuai `iconType` */}
+      <div onClick={showModal}>
+        {iconMapping[iconType] || iconMapping.file}{" "}
+        {/* Default ke file jika tidak ditemukan */}
+      </div>
 
       <Modal
         title={modalTitle}

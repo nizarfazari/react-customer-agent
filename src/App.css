@@ -31,3 +31,22 @@
     border-color: transparent;
   }
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #F3F4F6; /* Background track abu-abu muda */
+  border-radius: 10px; /* Rounded track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #9CA3AF; /* Warna abu-abu untuk thumb */
+  border-radius: 100px; /* Radius penuh membuat thumb berbentuk bulat */
+  transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6B7280; /* Warna abu-abu lebih gelap saat dihover */
+}
