@@ -12,10 +12,27 @@ import {
 import { Segmented } from "antd";
 import UserInformationComponent from "./UserInformationComponent";
 import { AppContext } from "../context/buble";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const IconComponentAI = () => {
   const { buble, countAction } = useContext(AppContext);
+  let [rate, setRate] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRate((prevRate) => {
+        if (prevRate >= 99) {
+          clearInterval(interval);
+          return 99; 
+        }
+        return prevRate + 9;
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
     <div className="p-5 rounded-l-lg col-span-2">
       <div className="flex items-center flex-col">
@@ -53,7 +70,9 @@ const IconComponentAI = () => {
                 <Robot size={18} weight="fill" className="text-slate-500" />
                 <p className="text-slate-600 text-[14px]">Automation Rate</p>
               </div>
-              <p className="font-semibold text-2xl mt-1 text-center">99%</p>
+              <p className="font-semibold text-2xl mt-1 text-center">
+                {rate} %
+              </p>
             </div>
           </div>
           <div className="border border-gray-300 bg-white shadow-lg  p-4 rounded-lg">

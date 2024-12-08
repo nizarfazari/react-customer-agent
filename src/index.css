@@ -10,7 +10,7 @@
 
 body {
 
-  margin: 0;
+  /* margin: 0;
   padding: 0;
   height: 1200px;
   width: 100vw;
@@ -18,8 +18,9 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow-x: hidden;
-
+  overflow-x: hidden; */
+  background: linear-gradient(to bottom right, #8FCEF9, #DDEFFF, #C9E5FC, #D1E9FC);
+  background-size: 100% 100%;
 }
 
 @keyframes gradientAnimation {

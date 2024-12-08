@@ -2,7 +2,7 @@ export const Message = [
     {
       sender: "OrchestratorAgent",
       content:
-        "Policy for Customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> to expire matches threshold (<2 weeks).",
+        "Policy for Customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> to expire matches threshold <span class='bg-[#D6ECFF] text-[#158CFF] px-2 py-1 rounded-full'>(<2 weeks)</span>.",
       time: new Date().toLocaleString(),
       photo: "/public/OrchestratorAgentAI.png",
       button: true,
@@ -48,6 +48,7 @@ export const Message = [
       time: new Date().toLocaleString(),
       photo: "/public/MarketingAgentAI.png",
       icon: "whatsapp",
+      button: true,
     },
     {
       sender: "CustomerService",
@@ -57,6 +58,7 @@ export const Message = [
       type: "user",
       photo: "/public/MarketingAgentAI.png",
       icon: "email",
+      button: true,
     },
   ];
 

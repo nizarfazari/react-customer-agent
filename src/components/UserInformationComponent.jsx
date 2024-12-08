@@ -95,7 +95,7 @@ const items1 = [
 const items2 = [
   {
     key: "2",
-    label: <span className="font-bold">User Information</span>,
+    label: <span className="font-bold">Client Information</span>,
     children: text,
   },
 ];
