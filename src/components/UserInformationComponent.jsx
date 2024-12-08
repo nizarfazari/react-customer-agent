@@ -14,7 +14,7 @@ const userDetails = {
   expiryDate: "26 Dec 2024",
   premium: "SGD 1,200",
   renewalLikelihood: "High",
-  email: "user@example.com",
+  email: "diomendesk@email.com",
   phone: "+65 1234 5678",
   lastInteraction: "5 Dec 2024",
 };
@@ -28,7 +28,7 @@ const text = (
         <EnvelopeSimple size={20} weight="fill" className="text-gray-600" />
         <p>Email</p>
       </div>
-      <p className="font-bold ">user@gmail.com</p>
+      <p className="font-bold ">{userDetails.email}</p>
     </div>
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-3 font-semibold text-gray-600">

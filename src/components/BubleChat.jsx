@@ -29,7 +29,7 @@ const BubleChat = ({ messages }) => {
             alt=""
           />
         </div>
-        {isLoading ? (
+        {messages?.sender !== "User" && isLoading ? (
           <p className="mt-2 thinking">Thinking...</p>
         ) : (
           <div className="w-fit">
@@ -42,9 +42,14 @@ const BubleChat = ({ messages }) => {
             >
               <div className="flex justify-between ">
                 <h1 className="text-lg font-medium ">{messages?.sender}</h1>
+
                 {messages?.icon === "policy" && (
                   <ModalComponent modalTitle="Policy">
-                    <img src="/public/modal/policy.png" alt="" />
+                    <img
+                      src="/public/modal/policy.png"
+                      className="w-full"
+                      alt=""
+                    />
                   </ModalComponent>
                 )}
 
@@ -56,7 +61,8 @@ const BubleChat = ({ messages }) => {
                     iconType={messages?.icon}
                   >
                     <img
-                      src={`/public/modal/${messages.icon}.png`} // Dynamically load the correct image
+                      src={`/public/modal/${messages.icon}.png`}
+                      className="w-full"
                       alt={messages.sender.icon}
                     />
                   </ModalComponent>
@@ -75,21 +81,8 @@ const BubleChat = ({ messages }) => {
                 />
               )}
 
-              {messages?.sender === "PolicyAgent" && (
+              {messages.button && (
                 <div className="mt-4 rounded-md py-2 flex justify-end w-full">
-                  <div className="flex gap-2 items-center">
-                    <button className="px-8 py-1 border bg-[#D6ECFF] rounded-full text-[#158CFF] font-semibold">
-                      <p>Edit</p>
-                    </button>
-                    <button className="px-7 py-1 border bg-lightgray-700 rounded-full text-white font-semibold">
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {messages?.sender === "OrchestratorAgent" && (
-                <div className="mt-4 py-2 flex  justify-end w-full">
                   <div className="flex gap-2 items-center">
                     <button className="px-8 py-1 border bg-[#D6ECFF] rounded-full text-[#158CFF] font-semibold">
                       <p>Edit</p>

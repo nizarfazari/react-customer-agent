@@ -3,62 +3,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ChatHeadersAI from "./ChatHeadersAI";
 import { FileImage, PaperPlaneTilt } from "@phosphor-icons/react";
 import { AppContext } from "../context/buble";
+import { Message , MessageResponse as messageResponse } from "../data/message";
 
-const messages = [
-  {
-    sender: "OrchestratorAgent",
-    content:
-      "Policy for Customer <strong>2304992</strong> to expire matches threshold (<2 weeks).",
-    time: new Date().toLocaleString(),
-    photo: "/public/OrchestratorAgentAI.png",
-  },
-  {
-    sender: "OrchestratorAgent",
-    content:
-      "Invoking PolicyAgent to retrieve details for Customer ID: <strong>2304992</strong>.",
-    time: new Date().toLocaleString(),
-    photo: "/public/OrchestratorAgentAI.png",
-  },
-  {
-    sender: "PolicyAgent",
-    content: "Policy Retrieved. Details as follows:",
-    time: new Date().toLocaleString(),
-    photo: "/public/PolicyAgentAI.png",
-    icon: "policy",
-  },
-  {
-    sender: "PolicyAgent",
-    content:
-      "Policy: <strong>Direct-PruProTech Life</strong> | Expiry: <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> | Premium: SGD <span class='bg-black text-white px-2 py-1 rounded-full'> $1,200 </span>",
-    time: new Date().toLocaleString(),
-    photo: "/public/PolicyAgentAI.png",
-    icon: "policy",
-  },
-  {
-    sender: "OrchestratorAgent",
-    content:
-      "Sending to Customer Service Agent to Prepare messages for Customer",
-    time: new Date().toLocaleString(),
-    photo: "/public/OrchestratorAgentAI.png",
-  },
-  {
-    sender: "CustomerService",
-    content:
-      "Generated WhatsApp: 'Hi Mr. Kastanis, your policy is expiring on <strong>26 Dec 2024</strong>. Renew now?'",
-    time: new Date().toLocaleString(),
-    photo: "/public/MarketingAgentAI.png",
-    icon: "whatsapp",
-  },
-  {
-    sender: "CustomerService",
-    content:
-      "Generated Email: '<strong>Subject:</strong> Renew Your Policy | <strong>Body:</strong> Dear Mr. Kastanis, your policy expires on <strong>26 Dec 2024</strong> . Click <span class='link-style'>here</span> to renew.'",
-    time: new Date().toLocaleString(),
-    type: "user",
-    photo: "/public/MarketingAgentAI.png",
-    icon: "email",
-  },
-];
 
 const ChatContentAI = () => {
   const { buble, setBuble } = useContext(AppContext);
@@ -77,7 +23,7 @@ const ChatContentAI = () => {
     setIsTyping(true);
 
     const interval = setInterval(() => {
-      if (index < messages.length) {
+      if (index < Message.length) {
         // console.log("Current message:", data);
         const now = Date.now();
         const elapsedTime = now - startTime;
@@ -86,7 +32,7 @@ const ChatContentAI = () => {
           const updatedMessages = [
             ...prevMessages,
             {
-              ...messages[index],
+              ...Message[index],
               id: index,
               time_execution: `${timeExecution} ms`,
             },
@@ -133,21 +79,7 @@ const ChatContentAI = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const messageResponse = [
-      {
-        sender: "PaymentAgent",
-        content: "Processing renewal for the policy. Please wait...",
-        photo: "/public/PaymentAgentAI.png",
-        time: new Date().toLocaleString(),
-      },
-      {
-        sender: "PaymentAgent",
-        content: "Policy renewal successful. Confirmation sent to the user.",
-        photo: "/public/PaymentAgentAI.png",
-        time: new Date().toLocaleString(),
-      },
-    ];
-
+   
     const newMessage = {
       sender: "User",
       content: formData.message,
@@ -169,17 +101,6 @@ const ChatContentAI = () => {
       }, (index + 1) * 2000);
     });
   };
-
-  //   const scrollToBottom = () => {
-  //     messagesEndRef.current?.scrollIntoView({
-  //       behavior: "smooth",
-  //       block: "end",
-  //     });
-  //   };
-
-  //   useEffect(() => {
-  //     scrollToBottom();
-  //   }, [buble]);
 
   return (
     <div className=" col-span-5">
