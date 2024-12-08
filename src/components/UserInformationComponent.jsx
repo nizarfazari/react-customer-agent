@@ -7,10 +7,12 @@ import {
   Phone,
   Trophy,
 } from "@phosphor-icons/react";
-import { Collapse } from "antd";
+import { Collapse, Skeleton } from "antd";
+import { AppContext } from "../context/buble";
+import { useContext, useEffect, useState } from "react";
 
 const userDetails = {
-  policyName: "Direct-PruProTech Life",
+  policyName: "Direct-PruShield Life",
   expiryDate: "26 Dec 2024",
   premium: "SGD 1,200",
   renewalLikelihood: "High",
@@ -98,24 +100,58 @@ const items2 = [
   },
 ];
 
-const UserInformationComponent = () => (
-  <div className="w-full mt-6">
-    {/* First Collapse */}
-    <Collapse
-      items={items1}
-      size="large"
-      className="mb-4"
-      bordered={false}
-      defaultActiveKey={["1"]}
-    />
+const UserInformationComponent = () => {
+  const { buble } = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+  const hasInsuranceData = buble.some((message) => message.insuranceData);
 
-    {/* Second Collapse */}
-    <Collapse
-      items={items2}
-      size="large"
-      bordered={false}
-      defaultActiveKey={["2"]}
-    />
-  </div>
-);
+  useEffect(() => {
+    if (hasInsuranceData) {
+      setLoading(true); // Aktifkan skeleton saat data mulai tersedia
+      const timer = setTimeout(() => setLoading(false), 1500); // Simulasi delay selama 1.5 detik
+      return () => clearTimeout(timer); // Bersihkan timer
+    }
+  }, [hasInsuranceData]);
+
+  return (
+    <div className="w-full mt-6">
+      {/* First Collapse */}
+      {loading ? (
+        <>
+          <Skeleton
+            active
+            paragraph={{ rows: 4 }}
+            title={false}
+            className="mb-4"
+          />
+          <Skeleton
+            active
+            paragraph={{ rows: 4 }}
+            title={false}
+            className="mb-4"
+          />
+        </>
+      ) : (
+        hasInsuranceData && (
+          <>
+            <Collapse
+              items={items1}
+              size="large"
+              className="mb-4"
+              bordered={false}
+              defaultActiveKey={["1"]}
+            />
+
+            <Collapse
+              items={items2}
+              size="large"
+              bordered={false}
+              defaultActiveKey={["2"]}
+            />
+          </>
+        )
+      )}
+    </div>
+  );
+};
 export default UserInformationComponent;

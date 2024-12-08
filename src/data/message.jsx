@@ -10,23 +10,24 @@ export const Message = [
     {
       sender: "OrchestratorAgent",
       content:
-        "Invoking PolicyAgent to retrieve details for Customer ID: <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong>.",
+        "Invoking <strong>PolicyAgent</strong> to retrieve details for Customer ID: <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong>.",
       time: new Date().toLocaleString(),
       photo: "/public/OrchestratorAgentAI.png",
       button: true,
     },
     {
       sender: "PolicyAgent",
-      content: "Policy Retrieved. Details as follows:",
+      content: "Policy number <strong class='bg-black text-white px-2 py-1 rounded-full'>00299292</strong> for customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> has been retrieved. Details as follows:",
       time: new Date().toLocaleString(),
       photo: "/public/PolicyAgentAI.png",
       icon: "policy",
       button: true,
+      insuranceData: true
     },
     {
       sender: "PolicyAgent",
       content:
-        "Policy: <strong>Direct-PruProTech Life</strong> | Expiry: <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> | Premium: SGD <span class='bg-black text-white px-2 py-1 rounded-full'> $1,200 </span>",
+        "Policy: <strong>Direct-PruShield Life</strong> | Expiry: <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> | Premium: SGD <span class='bg-black text-white px-2 py-1 rounded-full'> $1,200 </span>",
       time: new Date().toLocaleString(),
       photo: "/public/PolicyAgentAI.png",
       icon: "policy",
@@ -35,7 +36,7 @@ export const Message = [
     {
       sender: "OrchestratorAgent",
       content:
-        "Sending to Customer Service Agent to Prepare messages for Customer",
+        "Sending to <strong>Customer Service Agent</strong> to Prepare messages for Customer",
       time: new Date().toLocaleString(),
       photo: "/public/OrchestratorAgentAI.png",
       button: true,
@@ -64,7 +65,7 @@ export const Message = [
     {
       sender: "OrchestratorAgent",
       content:
-        "Received Approval from customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> for policy renewal.",
+        "Received Approval from customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> for policy renewal. Invoking <strong>PolicyAgent</strong>",
       photo: "/public/PaymentAgentAI.png",
       time: new Date().toLocaleString(),
     },
