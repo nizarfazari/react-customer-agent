@@ -19,26 +19,28 @@ const IconComponentAI = () => {
   let [rate, setRate] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRate((prevRate) => {
-        if (prevRate >= 99) {
-          clearInterval(interval);
-          return 99; 
-        }
-        return prevRate + 9;
-      });
-    }, 2000);
+    if (buble.length > 0) {
+      const interval = setInterval(() => {
+        setRate((prevRate) => {
+          if (prevRate >= 99) {
+            clearInterval(interval);
+            return 99;
+          }
+          return prevRate + 9;
+        });
+      }, 2000);
 
-    return () => clearInterval(interval);
-  }, []);
-
+      
+      return () => clearInterval(interval);
+    }
+  }, [buble]); 
 
   return (
     <div className="p-5 rounded-l-lg col-span-2">
       <div className="flex items-center flex-col">
         <div className="icon-ai relative w-fit">
           <img
-            src="/public/AgentAI.png"
+            src="/AgentAI.png"
             className="w-32 h-32 object-cover rounded-full"
             alt=""
           />

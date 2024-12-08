@@ -8,7 +8,7 @@ const ChatHeadersAI = () => {
         <div className="flex gap-3 items-center">
           <div>
             <img
-              src="/public/AgentAI.png"
+              src="/AgentAI.png"
               className="w-16 h-16 object-cover rounded-full"
               alt=""
             />

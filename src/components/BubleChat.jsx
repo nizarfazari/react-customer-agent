@@ -46,7 +46,7 @@ const BubleChat = ({ messages }) => {
                 {messages?.icon === "policy" && (
                   <ModalComponent modalTitle="Policy">
                     <img
-                      src="/public/modal/policy.png"
+                      src="/modal/policy.png"
                       className="w-full"
                       alt=""
                     />
@@ -61,7 +61,7 @@ const BubleChat = ({ messages }) => {
                     iconType={messages?.icon}
                   >
                     <img
-                      src={`/public/modal/${messages.icon}.png`}
+                      src={`/modal/${messages.icon}.png`}
                       className="w-full"
                       alt={messages.sender.icon}
                     />

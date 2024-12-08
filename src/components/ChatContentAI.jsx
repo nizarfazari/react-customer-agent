@@ -1,57 +1,18 @@
 import BubleChat from "./BubleChat";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import ChatHeadersAI from "./ChatHeadersAI";
 import { FileImage, PaperPlaneTilt } from "@phosphor-icons/react";
 import { AppContext } from "../context/buble";
-import { Message , MessageResponse as messageResponse } from "../data/message";
-
+import { MessageResponse as messageResponse } from "../data/message";
 
 const ChatContentAI = () => {
-  const { buble, setBuble } = useContext(AppContext);
-  console.log(buble);
-  const [isTyping, setIsTyping] = useState(false);
+  const { buble, setBuble, isTyping ,setIsTyping} = useContext(AppContext);
   const messagesEndRef = useRef(null);
 
   const [formData, setFormData] = useState({
     message: "",
     file: null,
   });
-
-  useEffect(() => {
-    const startTime = Date.now();
-    let index = 0;
-    setIsTyping(true);
-
-    const interval = setInterval(() => {
-      if (index < Message.length) {
-        // console.log("Current message:", data);
-        const now = Date.now();
-        const elapsedTime = now - startTime;
-        const timeExecution = elapsedTime - (index + 1) * 3000;
-        setBuble((prevMessages) => {
-          const updatedMessages = [
-            ...prevMessages,
-            {
-              ...Message[index],
-              id: index,
-              time_execution: `${timeExecution} ms`,
-            },
-          ];
-          //   console.log("Updated messages:", updatedMessages);
-          return updatedMessages;
-        });
-
-        setTimeout(() => {
-          index++;
-        }, 2000);
-      } else {
-        setIsTyping(false);
-        clearInterval(interval);
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -79,12 +40,11 @@ const ChatContentAI = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   
     const newMessage = {
       sender: "User",
       content: formData.message,
       time: new Date().toLocaleString(),
-      photo: "/public/diomendes.webp",
+      photo: "/diomendes.webp",
     };
     setBuble((prevMessages) => [...prevMessages, newMessage]);
     setFormData({
