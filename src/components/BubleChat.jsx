@@ -38,7 +38,7 @@ const BubleChat = ({ messages }) => {
                 messages?.sender === "User"
                   ? "bg-blue-600 text-white"
                   : "bg-white "
-              }`}
+              } ${messages?.icon === 'email' && 'border border-lightblue-700'}  ${messages?.icon === 'whatsapp' && 'border border-[#90ee90]'}`}
             >
               <div className="flex justify-between ">
                 <h1 className="text-lg font-medium ">{messages?.sender}</h1>

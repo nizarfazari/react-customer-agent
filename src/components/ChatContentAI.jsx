@@ -44,7 +44,7 @@ const ChatContentAI = () => {
       sender: "User",
       content: formData.message,
       time: new Date().toLocaleString(),
-      photo: "/diomendes.webp",
+      photo: "/avatar.jpg",
     };
     setBuble((prevMessages) => [...prevMessages, newMessage]);
     setFormData({
