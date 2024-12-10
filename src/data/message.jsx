@@ -157,7 +157,7 @@ export const MessageResponse = [
       },
     ],
     time: new Date().toLocaleString(),
-    photo: "/public/PaymentAgentAI.png",
+    photo: "/PaymentAgentAI.png",
   },
   {
     sender: "AdjucationAgent",
@@ -185,7 +185,7 @@ export const MessageResponse = [
       },
     ],
     time: new Date().toLocaleString(),
-    photo: "/public/PaymentAgentAI.png",
+    photo: "/PaymentAgentAI.png",
   },
   {
     sender: "BackendAgent",
@@ -206,7 +206,7 @@ export const MessageResponse = [
       },
     ],
     time: new Date().toLocaleString(),
-    photo: "/public/AgentAI.png",
+    photo: "/AgentAI.png",
   },
   {
     sender: "BackendAgent",
@@ -232,7 +232,7 @@ export const MessageResponse = [
       },
     ],
     time: new Date().toLocaleString(),
-    photo: "/public/AgentAI.png",
+    photo: "/AgentAI.png",
   },
 
   {
