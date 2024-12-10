@@ -8,19 +8,17 @@
   box-sizing: border-box;
 }
 
-body {
-
-  /* margin: 0;
-  padding: 0;
-  height: 1200px;
-  width: 100vw;
-  background-image: url('/public/background.jpg');
+html {
+  background: linear-gradient(
+    to bottom right,
+    #8fcef9,
+    #ddefff,
+    #c9e5fc,
+    #d1e9fc
+  );
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  overflow-x: hidden; */
-  background: linear-gradient(to bottom right, #8FCEF9, #DDEFFF, #C9E5FC, #D1E9FC);
-  background-size: 100% 100%;
+  min-height: 100vh; 
 }
 
 @keyframes gradientAnimation {
@@ -102,14 +100,13 @@ body {
   }
 }
 
-
 .link-style {
-  color: #5DADE2; /* Light blue color */
+  color: #5dade2; /* Light blue color */
   text-decoration: underline;
   cursor: pointer;
   font-weight: 500;
 }
 
 .link-style:hover {
-  color: #3498DB; /* Slightly darker blue on hover */
+  color: #3498db; /* Slightly darker blue on hover */
 }
