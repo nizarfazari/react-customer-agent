@@ -1,42 +1,44 @@
 /* eslint-disable react/prop-types */
-import { Spin } from "antd";
+import { AppContext } from "../context/buble";
 import ModalComponent from "./ModalComponent";
-import { useEffect, useState } from "react";
-import { CheckCircle } from "@phosphor-icons/react";
+import { useContext, useEffect, useState } from "react";
 
 const BubleChat = ({ messages }) => {
-  console.log(messages);
   const [isLoading, setIsLoading] = useState(true);
-  const [isChecking, setIsChecking] = useState(true);
   const [visibleContent, setVisibleContent] = useState("");
-  const [loadingIndex, setLoadingIndex] = useState(-1);
-  const [loadedStatus, setLoadedStatus] = useState([]);
-  const renderContent = async () => {
-    setIsLoading(true);
-    
+  const { isInitialLoading } = useContext(AppContext);
+  console.log(isInitialLoading);
+
+  useEffect(() => {
     if (Array.isArray(messages?.content)) {
-      const statusArray = new Array(messages.content.length).fill(false); 
-      for (let i = 0; i < messages.content.length; i++) {
-        setLoadingIndex(i); 
-        const currentContent = messages.content[i];
-        setVisibleContent((prev) => [...prev, currentContent]);
-        setIsLoading(false);
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-        statusArray[i] = true; 
-        setLoadedStatus([...statusArray]);
-      }
-      setLoadingIndex(-1); 
+      // Tangani jika content berupa array
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index < messages.content.length) {
+          setVisibleContent((prevContent) => [
+            ...prevContent,
+            messages.content[index],
+          ]);
+          
+          setTimeout(() => {
+            index++;
+          },1000)
+        } else {
+          clearInterval(interval); // Hentikan interval jika semua konten sudah ditampilkan
+          setIsLoading(false);
+        }
+      }, 1000); // Interval antar item
+      return () => clearInterval(interval);
     } else {
+      // Tangani jika content berupa string biasa
       setTimeout(() => {
-        setVisibleContent(messages?.content);
+        setVisibleContent([messages?.content]);
         setIsLoading(false);
       }, 2000);
     }
-  };
-
-  useEffect(() => {
-    renderContent();
   }, [messages]);
+
+ 
 
   return (
     <>
@@ -73,7 +75,7 @@ const BubleChat = ({ messages }) => {
 
                 {messages?.icon === "policy" && (
                   <ModalComponent modalTitle="Policy">
-                    <img src="/modal/detail-policy.jpg" className="w-full" alt="" />
+                    <img src="/modal/policy.png" className="w-full" alt="" />
                   </ModalComponent>
                 )}
 
@@ -86,7 +88,7 @@ const BubleChat = ({ messages }) => {
                     iconType={messages?.icon}
                   >
                     <img
-                      src={`/modal/${messages?.imageIcon}`}
+                      src={`/modal/${messages.icon}.png`}
                       className="w-full"
                       alt={messages.sender.icon}
                     />
@@ -95,43 +97,16 @@ const BubleChat = ({ messages }) => {
               </div>
 
               {/* Handle Content User */}
-              {messages?.sender !== "User" ? (
-                Array.isArray(messages?.content) ? (
-                  visibleContent.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 justify-between"
-                    >
-                      <p dangerouslySetInnerHTML={{ __html: item.content }} />
-                      {index === loadingIndex ? (
-                        <Spin className="!text-gray-700 ml-4" />
-                      ) : loadedStatus[index] ? (
-                        <CheckCircle
-                          size={25}
-                          weight="fill"
-                          className="text-green-500 ml-4"
-                        />
-                      ) : null}
-                    </div>
-                  ))
-                ) : (
-                  <p
-                    className="mt-2"
-                    dangerouslySetInnerHTML={{ __html: visibleContent }}
-                  />
-                )
+              {messages?.sender !== "User" && isInitialLoading ? (
+                <p
+                  className="mt-2"
+                  dangerouslySetInnerHTML={{ __html: visibleContent }}
+                />
               ) : (
-                <div>
-                  {messages?.fileName && (
-                    <p className="mt-2">{messages?.fileName?.name}</p>
-                  )}
-                  <p
-                    className="mt-2"
-                    dangerouslySetInnerHTML={{
-                      __html: messages?.content || "",
-                    }}
-                  />
-                </div>
+                <p
+                  className="mt-2"
+                  dangerouslySetInnerHTML={{ __html: messages?.content || "" }}
+                />
               )}
 
               {/* Handle Button Type */}

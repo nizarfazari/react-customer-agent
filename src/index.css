@@ -10,16 +10,7 @@
 
 body {
 
-  /* margin: 0;
-  padding: 0;
-  height: 1200px;
-  width: 100vw;
-  background-image: url('/public/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow-x: hidden; */
-  background: linear-gradient(to bottom right, #8FCEF9, #DDEFFF, #C9E5FC, #D1E9FC);
+  background: linear-gradient(to bottom right, #d9cb4a, #ead948, #ece177, #cdc156);
   background-size: 100% 100%;
 }
 

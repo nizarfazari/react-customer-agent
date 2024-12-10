@@ -17,7 +17,7 @@ const userDetails = {
   premium: "SGD 1,200",
   renewalLikelihood: "High",
   email: "diomendesk@email.com",
-  phone: "+65 1234 5678",
+  phone: "81234958",
   lastInteraction: "5 Dec 2024",
 };
 
@@ -37,7 +37,7 @@ const text = (
         <Phone size={20} weight="fill" className="text-gray-600" />
         <p>Phone</p>
       </div>
-      <p className="font-bold ">+65 1234 5678</p>
+      <p className="font-bold "> 8123 4958</p>
     </div>
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-3 font-semibold text-gray-600">

@@ -50,14 +50,16 @@ const ChatContentAI = () => {
       photo: "/avatar.jpg",
     };
 
+    setBuble((prevMessages) => [...prevMessages, newMessage]);
 
     if (formData.file) {
-      setBuble((prevMessages) => [
-        ...prevMessages,
-        { ...newMessage, fileName: formData.file },
-      ]);
-    } else {
-      setBuble((prevMessages) => [...prevMessages, newMessage]);
+      const fileMessage = {
+        sender: "User",
+        content: `File sent: ${formData.file.name}`,
+        time: new Date().toLocaleString(),
+        photo: "/avatar.jpg",
+      };
+      setBuble((prevMessages) => [...prevMessages, fileMessage]);
     }
 
     setFormData({
@@ -78,24 +80,20 @@ const ChatContentAI = () => {
   };
 
   return (
-    <div className=" col-span-5">
+    <div className="col-span-5">
       <ChatHeadersAI />
-      <div className="bg-[#F7FBFC] px-4 py-3 bg-[#F7FBFC] bg-cover rounded-lg h-[700px] overflow-y-auto custom-scrollbar">
+      <div className="bg-[#F7FBFC] px-4 py-3 bg-cover rounded-lg h-[700px] overflow-y-auto custom-scrollbar">
         <div className="flex flex-col gap-4 my-4">
           {isInitialLoading ? (
-            <div className="initial-loader ">Retrieving data WhatsApp...</div>
+            <div className="initial-loader">Retrieving data WhatsApp...</div>
           ) : (
             <>
-              {buble.map(
-                (message, index) =>
-                  message && (
-                    <div key={index}>
-                      <BubleChat messages={message} />
-                      <div ref={messagesEndRef} />
-                    </div>
-                  )
-              )}
-
+              {buble.map((message, index) => (
+                <div key={index}>
+                  <BubleChat messages={message} />
+                  <div ref={messagesEndRef} />
+                </div>
+              ))}
               {isTyping && (
                 <div className="loader">
                   <span className="dot"></span>

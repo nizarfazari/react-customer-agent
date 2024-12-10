@@ -69,6 +69,7 @@ const ModalComponent = ({
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+         className="!w-[800px]"
       >
         {children}
       </Modal>

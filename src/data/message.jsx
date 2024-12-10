@@ -1,111 +1,254 @@
 export const Message = [
-    {
-      sender: "OrchestratorAgent",
-      content:
-        "Policy for Customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> to expire matches threshold <span class='bg-[#D6ECFF] text-[#158CFF] px-2 py-1 rounded-full'>(<2 weeks)</span>.",
-      time: new Date().toLocaleString(),
-      photo: "/OrchestratorAgentAI.png",
-      button: true,
-    },
-    {
-      sender: "OrchestratorAgent",
-      content:
-        "Invoking <strong>PolicyAgent</strong> to retrieve details for Customer ID: <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong>.",
-      time: new Date().toLocaleString(),
-      photo: "/OrchestratorAgentAI.png",
-      button: true,
-    },
-    {
-      sender: "PolicyAgent",
-      content: "Policy number <strong class='bg-black text-white px-2 py-1 rounded-full'>00299292</strong> for customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> has been retrieved. Details as follows:",
-      time: new Date().toLocaleString(),
-      photo: "/PolicyAgentAI.png",
-      icon: "policy",
-      button: true,
-      insuranceData: true
-    },
-    {
-      sender: "PolicyAgent",
-      content:
-        "Policy: <strong>Direct-PruShield Life</strong> | Expiry: <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> | Premium: SGD <span class='bg-black text-white px-2 py-1 rounded-full'> $1,200 </span>",
-      time: new Date().toLocaleString(),
-      photo: "/PolicyAgentAI.png",
-      icon: "policy",
-      button: true,
-    },
-    {
-      sender: "OrchestratorAgent",
-      content:
-        "Sending to <strong>Customer Service Agent</strong> to Prepare messages for Customer",
-      time: new Date().toLocaleString(),
-      photo: "/OrchestratorAgentAI.png",
-      button: true,
-    },
-    {
-      sender: "CustomerService",
-      content:
-        "Generated WhatsApp: 'Hi Mr. Kastanis, your policy is expiring on <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span>. Renew now?'",
-      time: new Date().toLocaleString(),
-      photo: "/MarketingAgentAI.png",
-      icon: "whatsapp",
-      button: true,
-    },
-    {
-      sender: "CustomerService",
-      content:
-        "Generated Email: '<strong>Subject:</strong> Renew Your Policy | <strong>Body:</strong> Dear Mr. Kastanis, your policy expires on <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> . Click <span class='link-style'>here</span> to renew.'",
-      time: new Date().toLocaleString(),
-      type: "user",
-      photo: "/MarketingAgentAI.png",
-      icon: "email",
-      button: true,
-    },
-  ];
+  {
+    sender: "CustomerServiceAgent",
+    content: `Received WhatsApp message from <strong>Mobile Number:</strong> <span class='bg-black text-white px-2 py-1 rounded-full'>no. 81234958</span>`,
+    time: new Date().toLocaleString(),
+    photo: "/OrchestratorAgentAI.png",
+  },
+  {
+    sender: "CustomerService",
+    content: `Sending to <strong>Policy Agent</strong> for Further Handling, WhatsApp: <span class='bg-black text-white px-2 py-1 rounded-full'>no. 81234958</span>
+    <p class='mt-3'>
+             <i>
+       Hello, I am a Prudential customer and would
+      like some clarification for my accident coverage.
+      I have sustained an injury in Singapore. My policy number is
+[009282838]
+I am currently at NUHS, and I’d like to confirm if my policy covers
+for broken arm in a car accident.
+Can you let me know if the policy covers, and what I need to do,
+Thank you for your assistance!
+    </i>
+    </p>
+    `,
+    time: new Date().toLocaleString(),
+    icon: "whatsapp",
+    photo: "/OrchestratorAgentAI.png",
+    imageIcon: "/whatsapp-received.jpg",
+  },
 
+  {
+    sender: "PolicyAgent",
+    content:
+      "Retrieve policy by customer information Mobile Number: <strong class='bg-black text-white px-2 py-1 rounded-full'>no. 81234958</strong>",
+    time: new Date().toLocaleString(),
+    photo: "/PolicyAgentAI.png",
+    insuranceData: true,
+  },
 
-  export  const MessageResponse = [
-    {
-      sender: "OrchestratorAgent",
-      content:
-        "Received Approval from customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong> for policy renewal. Invoking <strong>PaymentAgent</strong>",
-      photo: "/PaymentAgentAI.png",
-      time: new Date().toLocaleString(),
-    },
-    {
-      sender: "PaymentAgent",
-      content:
-        "Issuing payment amount SGD <span class='bg-black text-white px-2 py-1 rounded-full'>$1,200</span> through PayNow Account to customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong>, for policy <strong class='bg-black text-white px-2 py-1 rounded-full'>00299292</strong>",
-      photo: "/PaymentAgentAI.png",
-      time: new Date().toLocaleString(),
-    },
-    {
-      sender: "PaymentAgent",
-      content:
-        "Payment <strong> Successful </strong> Confirmation number <strong class='bg-black text-white px-2 py-1 rounded-full'>PAY-2933939</strong>",
-      photo: "/PaymentAgentAI.png",
-      time: new Date().toLocaleString(),
-    },
-    {
-      sender: "Orchestrator",
-      content:
-        "Payment <strong> Successful </strong>, Invoking <strong>PolicyAgent</strong> to update record <strong class='bg-black text-white px-2 py-1 rounded-full'>00299292</strong>",
-      photo: "/PaymentAgentAI.png",
-      time: new Date().toLocaleString(),
-    },
-    {
-      sender: "PolicyAgent",
-      content:
-        "Successfully Update policy <strong class='bg-black text-white px-2 py-1 rounded-full'>00299292</strong> with new expiry date <span class='bg-black text-white px-2 py-1 rounded-full'>26 Dec 2024</span> for customer <strong class='bg-black text-white px-2 py-1 rounded-full'>2304992</strong>",
-      photo: "/PaymentAgentAI.png",
-      time: new Date().toLocaleString(),
-    },
-    {
-        sender: "CustomerService",
+  {
+    sender: "PolicyAgent",
+    content: [
+      {
         content:
-          "Thank you, your insurance policy <strong class='bg-black text-white px-2 py-1 rounded-full'>00299292</strong> has been updated.",
-        time: new Date().toLocaleString(),
-        type: "user",
-        photo: "/MarketingAgentAI.png",
-        icon: "email",
-    }
-  ];
+          "1. Checking <strong>if injury_type='broken arm in a car accident'</strong> is covered by policy",
+        isChecking: true,
+      },
+      {
+        content:
+          "2. OpenAI <strong>Query = Injury Covered </strong>, refer to page 51 click <a href='/modal/detail-policy.jpg' target='_blank' class='link-style' class='link-style'>here</a>",
+        isChecking: true,
+      },
+      {
+        content: "3. T&C Pru Shield Document check, <strong>completed</strong>",
+        isChecking: true,
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/PolicyAgentAI.png",
+    imageIcon: "/detail-policy.jpg",
+    icon: "policy",
+  },
+
+  {
+    sender: "CustomerServiceAgent",
+    content: `Sending to WhatsApp to client <span class='bg-black text-white px-2 py-1 rounded-full'>no. 81234958</span>
+        <p class='mt-3'>
+        <i>
+        Based on your policy your case is covered,
+Please find the link with the required
+document and instructions.
+Thank you Prudential Customer Service Team
+        </i>
+        </p>
+      `,
+    time: new Date().toLocaleString(),
+    photo: "/OrchestratorAgentAI.png",
+    imageIcon: "/whatsapp-sending.jpg",
+    icon: "whatsapp",
+  },
+  {
+    sender: "PolicyAgent",
+    content:
+      "Creating claim case, with basic of information of policy ID <span class='bg-black text-white px-2 py-1 rounded-full'>009282838</span>. Claim Case number <span class='bg-black text-white px-2 py-1 rounded-full'>1-293920-0202</span> for policy ID <span class='bg-black text-white px-2 py-1 rounded-full'>009282838</span>",
+    time: new Date().toLocaleString(),
+    photo: "/PolicyAgentAI.png",
+  },
+];
+
+export const MessageResponse = [
+  {
+    sender: "DocumentAgent",
+    content: [
+      {
+        content: "1. Checking customer submitted documents",
+        isChecking: true,
+      },
+      {
+        content:
+          "2. Document Check <strong>Complete</strong> moving to Data Extraction",
+        isChecking: true,
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/MarketingAgentAI.png",
+  },
+  {
+    sender: "DocumentAgent",
+    content: [
+      {
+        content: "1. Content processing",
+        isChecking: true,
+      },
+      {
+        content:
+          "2. Information Extraction and conversion into pre-defined format",
+        isChecking: true,
+      },
+      {
+        content: "3. Verifying Data Acuracy",
+        isChecking: true,
+      },
+      {
+        content: "4. Checking data consistency",
+        isChecking: true,
+      },
+      {
+        content: "5. <strong>Status Success</strong>",
+        isChecking: true,
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/MarketingAgentAI.png",
+  },
+  {
+    sender: "AdjucationAgent",
+    content: [
+      {
+        content:
+          "1. Initiating Claim assessment Proccess for policy ID <span class='bg-black text-white px-2 py-1 rounded-full'>009282838</span>",
+        isChecking: true,
+      },
+      {
+        content: "2. Check claim history",
+        isChecking: true,
+      },
+      {
+        content: "3. Check Readmission Rate",
+        isChecking: true,
+      },
+      {
+        content: "4. Assess medical cost by comparing with benchmark",
+        isChecking: true,
+      },
+      {
+        content: "5. Rate Normal",
+        isChecking: true,
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/public/PaymentAgentAI.png",
+  },
+  {
+    sender: "AdjucationAgent",
+    content: [
+      {
+        content:
+          "1. Making decision whether <strong>APPROVED</strong> or <strong>REJECT</strong>",
+        isChecking: true,
+      },
+      {
+        content:
+          "2. Decision = <span class='bg-[#D6ECFF] rounded-full px-2 py-1 text-[#158CFF]'>APPROVED</span>",
+      },
+      {
+        content:
+          "3. Calculating payment amount based on policy <span class='bg-black text-white px-2 py-1 rounded-full'>009282838</span>",
+        isChecking: true,
+      },
+      {
+        content:
+          "4. Payment Amount set to <span class='bg-black text-white px-2 py-1 rounded-full'>400 SGD</span>",
+      },
+      {
+        content: "5. Procceding to Payment",
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/public/PaymentAgentAI.png",
+  },
+  {
+    sender: "BackendAgent",
+    content: [
+      {
+        content:
+          "<p>1. Making payment for Customer ID <span class='bg-black text-white px-2 py-1 rounded-full'>009282838</span></p>",
+        isChecking: true,
+      },
+      {
+        content:
+          "<p class='my-4'>2. Payment successful <span class='bg-black text-white px-2 py-1 rounded-full'>PAY-2239939</span></p>",
+      },
+      {
+        content:
+          "<p>3. Updating <span class='bg-[#D6ECFF] rounded-full px-2 py-1 text-[#158CFF]'>MINI_EMR_DB</span></p>",
+        isChecking: true,
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/public/AgentAI.png",
+  },
+  {
+    sender: "BackendAgent",
+    content: [
+      {
+        content: "Update <strong>provider database</strong>",
+      },
+      {
+        content: "1. Cost assessment",
+        isChecking: true,
+      },
+      {
+        content: "2. Case Condition",
+        isChecking: true,
+      },
+      {
+        content: "3. Satisfaction score",
+        isChecking: true,
+      },
+      {
+        content: "4.  Readmission Rate",
+        isChecking: true,
+      },
+    ],
+    time: new Date().toLocaleString(),
+    photo: "/public/AgentAI.png",
+  },
+
+  {
+    sender: "CustomerServiceAgent",
+    content: `Sending <strong>Whatsapp Message</strong>  policy ID : <span class='bg-black text-white px-2 py-1 rounded-full'>009282838</span> Mobile Number: <span class='bg-black text-white px-2 py-1 rounded-full'>no. 81234958</span>
+    <p>
+    <i>
+    Hello, I’m pleased to inform you that your
+claim for $400 related to the car accident and broken arm has
+been approved and paid to your account. Thank you for choosing Prudential.
+</i>
+    </p>
+    `,
+    time: new Date().toLocaleString(),
+    icon: "whatsapp",
+    imageIcon: "/whatsapp-inform.jpg",
+    photo: "/OrchestratorAgentAI.png",
+  },
+];

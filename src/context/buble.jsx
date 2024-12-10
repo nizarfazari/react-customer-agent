@@ -16,6 +16,7 @@ const BubleProvider = ({ children }) => {
 
   const [countAction, setCountAction] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(false);
   const incrementActionCount = () => {
     setCountAction((prevCount) => prevCount + 1);
   };
@@ -24,6 +25,7 @@ const BubleProvider = ({ children }) => {
     const startTime = Date.now();
     let index = 0;
     setIsTyping(true);
+    setIsInitialLoading(true);
 
     const interval = setInterval(() => {
       if (index < Message.length) {
@@ -45,6 +47,10 @@ const BubleProvider = ({ children }) => {
         setTimeout(() => {
           index++;
         }, 2000);
+
+        if (index === 0) {
+          setIsInitialLoading(false);
+        }
       } else {
         setIsTyping(false);
         clearInterval(interval);
@@ -63,7 +69,8 @@ const BubleProvider = ({ children }) => {
         incrementActionCount,
         isTyping,
         startGetting,
-        setIsTyping
+        setIsTyping,
+        isInitialLoading,
       }}
     >
       {children}

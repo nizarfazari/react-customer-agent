@@ -86,7 +86,7 @@ const IconComponentAI = () => {
               <p className="font-semibold text-2xl mt-1 text-center">0</p>
             </div>
           </div>
-          <div className="border border-gray-300 bg-white shadow-lg  p-4 rounded-lg">
+          {/* <div className="border border-gray-300 bg-white shadow-lg  p-4 rounded-lg">
             <div>
               <div className="flex items-center gap-2">
                 <Eye size={18} weight="fill" className="text-slate-500" />
@@ -96,7 +96,7 @@ const IconComponentAI = () => {
                 {countAction}
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <Segmented

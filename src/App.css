@@ -14,15 +14,18 @@
   overflow: hidden;
   border-right: 0.15em solid #333; /* Create the typing cursor effect */
   white-space: nowrap;
-  animation: typing 2s steps(20) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
+  animation: typing 4s steps(50) infinite, blinkCaret 0.75s step-end infinite;
 }
 
 @keyframes typing {
-  from {
+  0% {
     width: 0;
   }
-  to {
-    width: 10em; 
+  50% {
+    width: fit-content; /* Teks selesai ditampilkan */
+  }
+  100% {
+    width: 0; /* Kembali ke awal */
   }
 }
 
@@ -31,7 +34,6 @@
     border-color: transparent;
   }
 }
-
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px; /* Lebar scrollbar */
 }
@@ -50,3 +52,5 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #6B7280; /* Warna abu-abu lebih gelap saat dihover */
 }
+
+
