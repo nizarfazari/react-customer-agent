@@ -12,6 +12,9 @@ body {
 
   background: linear-gradient(to bottom right, #d9cb4a, #ead948, #ece177, #cdc156);
   background-size: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh; 
 }
 
 @keyframes gradientAnimation {
@@ -93,14 +96,13 @@ body {
   }
 }
 
-
 .link-style {
-  color: #5DADE2; /* Light blue color */
+  color: #5dade2; /* Light blue color */
   text-decoration: underline;
   cursor: pointer;
   font-weight: 500;
 }
 
 .link-style:hover {
-  color: #3498DB; /* Slightly darker blue on hover */
+  color: #3498db; /* Slightly darker blue on hover */
 }
